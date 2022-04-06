@@ -1,0 +1,44 @@
+.App {
+  text-align: center;
+}
+
+img {
+  height: 100px;
+  width: 100px;
+}
+
+.card {
+  width: 500px;
+  height: 250px;
+
+ } 
+.mainPage {
+  display: grid;
+  grid-template-columns:  [col-start] 25% [col-start] 75%
+
+}
+.menuBar {
+  display: grid;
+  grid-template-rows:  [row-start] 60px [row-start] 60px [row-start] 60px [row-start] 60px [row-start] 60px;
+
+  padding: 10px;
+}
+.postHeaders {
+  display: flex;
+  gap: 5px;
+  padding-bottom:5px;
+}
+.cardContainer {
+  border: solid 1px;
+  width: 600px;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 50px;
+  padding-bottom: 50px;
+}
+.profilePic {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  border: solid 1px;
+}
