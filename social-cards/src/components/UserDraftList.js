@@ -1,7 +1,6 @@
-import { Card } from "./Card";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { Draft } from "./Draft";
 
 export const UserDraftList = ({ token, currentUser }) => {

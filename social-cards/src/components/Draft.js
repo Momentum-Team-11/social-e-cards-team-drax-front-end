@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import ReactCardFlip from "react-card-flip";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import Tooltip from "react-tooltip";
 
 const Draft = ({
   userId,

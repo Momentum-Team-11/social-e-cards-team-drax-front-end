@@ -18,7 +18,7 @@ export const EditCard = ({ setAuth, token, username, comments }) => {
   const [cardAlignment, setCardAlignment] = useState("");
   const [card, setCard] = useState(null);
   const params = useParams();
-
+  setCard(card);
   useEffect(() => {
     axios
       .get(`https://ecard-drax.herokuapp.com/api/cards/${params.cardId}`, {

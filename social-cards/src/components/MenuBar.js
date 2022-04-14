@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Logout } from "./Logout";
+// import { Logout } from "./Logout";
 
 const MenuBar = (profilePk, setAuth, token) => {
   const menuLink = {
