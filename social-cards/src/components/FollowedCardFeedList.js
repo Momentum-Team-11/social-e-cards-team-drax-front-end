@@ -10,9 +10,9 @@ export const FollowedCardFeedList = ({
   comments,
 }) => {
   const [cards, setCards] = useState([]);
-  let newArray = [];
+  // let newArray = [];
   const [pages, setPages] = useState([]);
-  const [commentId, setCommentId] = useState("");
+  // const [commentId, setCommentId] = useState("");
   const [currentUserPk, setCurrentUserPk] = useState("");
 
   console.log(comments);
@@ -70,7 +70,7 @@ export const FollowedCardFeedList = ({
                   has_back={card.has_back}
                   key={card.id}
                   ProfileImageUrl={card.ProfileImageUrl}
-                  CardImageUrl={card.CardImageUrl}
+                  CardImageUrl={card.image}
                   occasion={card.occasion}
                   like={card.like}
                   cardId={card.pk}
@@ -80,6 +80,7 @@ export const FollowedCardFeedList = ({
                   card_font={card.card_font}
                   comments={comments}
                   currentUserPk={currentUserPk}
+                  card_font_color={card}
                 />
               </div>
             );

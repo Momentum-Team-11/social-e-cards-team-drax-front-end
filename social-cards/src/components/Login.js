@@ -1,31 +1,55 @@
 import { useState } from "react";
 import axios from "axios";
 import "../App.css";
-import { Link } from "react-router-dom";
 
 const Login = ({ setAuth, token }) => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  console.log(username);
+  console.log(password);
 
   const handleLogin = (e) => {
     e.preventDefault();
     setError("");
+    const options = {
+      method: "POST",
+      url: "https://ecard-drax.herokuapp.com/api/auth/token/login",
+      headers: { "Content-Type": "application/json" },
+      data: { username: username, password: password },
+    };
+
     axios
-      .post("https://ecard-drax.herokuapp.com/api/auth/token/login", {
-        username: username,
-        password: password,
+      .request(options)
+      .then(function (response) {
+        console.log(response.data);
+        setAuth(username, response.data.auth_token);
       })
-      .then((res) => {
-        console.log(res.data);
-        setAuth(username, res.data.auth_token);
-      })
-      .catch((e) => setError(e.message));
+      .catch(function (error) {
+        console.error(error);
+      });
   };
+
+  // const handleLogin = (e) => {
+  //   e.preventDefault();
+  //   setError("");
+  //   axios
+  //     .post("https://ecard-drax.herokuapp.com/api/auth/token/login", {
+  //       username: "fromreact",
+  //       password: "chickenwings1234",
+  //     })
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       setAuth(username, res.data.auth_token);
+  //     })
+  //     .catch((e) => setError(e));
+  // };
 
   return (
     <div className="Login">
-      <h2>Log In</h2>
+      <h2>
+        <u>Log In</u>
+      </h2>
       {error && <div className="error">{error}</div>}
       <form onSubmit={handleLogin}>
         <label className="input-label" htmlFor="username">
@@ -33,7 +57,7 @@ const Login = ({ setAuth, token }) => {
         </label>
         <input
           type="text"
-          id="username"
+          id="loginUsername"
           required
           value={username}
           onChange={(e) => setUserName(e.target.value)}
@@ -43,17 +67,15 @@ const Login = ({ setAuth, token }) => {
             Password
           </label>
           <input
-            type="password"
-            id="password"
+            type="text"
+            id="loginPassword"
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <div className="field-controls">
-          <button type="submit">
-            <Link to="/home">Log In</Link>
-          </button>
+          <button type="submit">Log In</button>
         </div>
       </form>
     </div>

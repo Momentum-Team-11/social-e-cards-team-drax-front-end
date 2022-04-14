@@ -5,7 +5,13 @@ import { Card } from "./Card";
 import { Link } from "react-router-dom";
 import Select from "react-select";
 
-export const CreateCard = ({ setAuth, token, username, comments }) => {
+export const CreateCard = ({
+  setAuth,
+  token,
+  username,
+  comments,
+  profileImage,
+}) => {
   const [error, setError] = useState("");
   const [frontDescription, setFrontDescription] = useState("");
   const [occasion, setOccasion] = useState("");
@@ -24,6 +30,7 @@ export const CreateCard = ({ setAuth, token, username, comments }) => {
       setHasBack("true");
     }
   };
+  console.log(profileImage);
   const handleLogin = () => {
     setError("");
     const options = {
@@ -44,6 +51,9 @@ export const CreateCard = ({ setAuth, token, username, comments }) => {
         border: cardBorder,
         card_font: cardFont,
         card_alignment: cardAlignment,
+        profile_pic: profileImage,
+        font_color: cardFontColor,
+        image: cardImageUrl,
       },
     };
 
@@ -76,6 +86,9 @@ export const CreateCard = ({ setAuth, token, username, comments }) => {
         border: cardBorder,
         card_font: cardFont,
         card_alignment: cardAlignment,
+        profile_pic: profileImage,
+        font_color: cardFontColor,
+        image: cardImageUrl,
       },
     };
 

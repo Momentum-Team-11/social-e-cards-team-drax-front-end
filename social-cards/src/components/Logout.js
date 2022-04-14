@@ -25,6 +25,8 @@ export const Logout = ({ setAuth, token }) => {
       });
     localStorage.setItem("username", "");
     localStorage.setItem("token", "");
+    localStorage.setItem("profilePk", "");
+    localStorage.setItem("profileImage", "");
     setAuth("", "");
   };
 

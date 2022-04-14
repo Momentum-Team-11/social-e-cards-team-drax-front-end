@@ -1,4 +1,4 @@
-import { useState, useEffect, useId } from "react";
+import { useState, useEffect } from "react";
 import ReactCardFlip from "react-card-flip";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -34,8 +34,8 @@ const Card = ({
   const [cardStyle, setCardStyle] = useState();
   const [commentText, setCommentText] = useState("");
   const [error, setError] = useState("");
-  const [commentId, setCommentId] = useState("");
-  const blankCommentId = useId();
+  // const [commentId, setCommentId] = useState("");
+  // const blankCommentId = useId();
   const [showEditBox, setShowEditBox] = useState(false);
 
   useEffect(() => {
@@ -320,16 +320,22 @@ const Card = ({
       )}
       {username === currentUser ? (
         <div className="buttonList">
-          <button onClick={() => addLike()}>Like 👍 </button>
-          <button onClick={() => removeLike()}>Unlike 👎 </button>
+          {like.includes(currentUserPk) ? (
+            <button onClick={() => removeLike()}>Unlike 👎 </button>
+          ) : (
+            <button onClick={() => addLike()}>Like 👍 </button>
+          )}
           <button onClick={() => follow()}>Follow User </button>
           <button onClick={() => unFollow()}>Unfollow User </button>
           <Link to={`/edit/${cardId}`}>Edit</Link>
         </div>
       ) : (
         <div className="buttonList">
-          <button onClick={() => addLike()}>Like 👍 </button>
-          <button onClick={() => removeLike()}>Unlike 👎 </button>
+          {like.includes(currentUserPk) ? (
+            <button onClick={() => removeLike()}>Unlike 👎 </button>
+          ) : (
+            <button onClick={() => addLike()}>Like 👍 </button>
+          )}
           <button onClick={() => follow()}>Follow User </button>
           <button onClick={() => unFollow()}>Unfollow User </button>
         </div>

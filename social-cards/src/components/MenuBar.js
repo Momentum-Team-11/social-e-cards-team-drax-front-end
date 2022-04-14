@@ -26,15 +26,15 @@ const MenuBar = (profilePk, setAuth, token) => {
       <Link style={menuLink} to="/profile">
         😀 Profile
       </Link>
-      {profilePk ? (
-        <Link style={menuLink} to="/edit-profile/:profilePk">
-          ✍️ Edit Profile
-        </Link>
-      ) : (
-        <Link style={menuLink} to="/customize-profile">
-          ✍️ Customize Profile
-        </Link>
-      )}
+      {/* {profilePk ? ( */}
+      <Link style={menuLink} to="/edit-profile/:profilePk">
+        ✍️ Edit Profile
+      </Link>
+      {/* ) : ( */}
+      <Link style={menuLink} to="/customize-profile">
+        ✍️ Customize Profile
+      </Link>
+      {/* )} */}
 
       <Link style={menuLink} to="/mycards">
         🗃️ My Cards
@@ -42,7 +42,7 @@ const MenuBar = (profilePk, setAuth, token) => {
       <Link style={menuLink} to="/mydrafts">
         🗂️ My Drafts
       </Link>
-      <Logout setAuth={setAuth} token={token}></Logout>
+      <Link to="/logout">Logout</Link>
     </div>
   );
 };

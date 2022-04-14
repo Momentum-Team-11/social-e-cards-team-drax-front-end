@@ -55,9 +55,6 @@ export const UserDraftList = ({ token, currentUser }) => {
             </div>
           );
         })}
-        <Link to="page2">
-          <button>Next Page</button>
-        </Link>
       </div>
     </>
   );

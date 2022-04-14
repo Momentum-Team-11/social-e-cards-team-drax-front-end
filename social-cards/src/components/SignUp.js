@@ -1,6 +1,5 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 export const SignUp = () => {
   const [username, setUserName] = useState("");
@@ -32,8 +31,10 @@ export const SignUp = () => {
       });
   };
   return (
-    <div className="SignUp">
-      <h2>Sign Up</h2>
+    <div className="signup">
+      <h2>
+        <u>Sign Up</u>
+      </h2>
       {error && <div className="error">{error}</div>}
       <form onSubmit={handleSignUp}>
         <label className="input-label" htmlFor="username">
@@ -62,7 +63,6 @@ export const SignUp = () => {
           <button type="submit">Sign Up</button>
         </div>
       </form>
-      <Link to="/home">Home</Link>
     </div>
   );
 };

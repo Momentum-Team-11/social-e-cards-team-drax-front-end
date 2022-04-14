@@ -27,6 +27,7 @@ export const EditProfile = ({ setAuth, token, username, profilePk }) => {
         setLastName(res.data.last_name);
         setAboutMe(res.data.about_me);
         setBanner(res.data.banner);
+        console.log(res.data);
       });
   }, [profilePk, token]);
 
@@ -53,11 +54,13 @@ export const EditProfile = ({ setAuth, token, username, profilePk }) => {
         Authorization: `Token ${token}`,
       },
       data: {
-        user: pk,
+        pk: profilePk,
         profile_pic: profilePic,
         first_name: firstName,
         last_name: lastName,
         about_me: aboutMe,
+        banner: banner,
+        user: pk,
       },
     };
 
@@ -176,7 +179,7 @@ export const EditProfile = ({ setAuth, token, username, profilePk }) => {
   };
   return (
     <div className="createCard">
-      <h2>Edit Your Draft:</h2>
+      <h2>Edit Your Profile:</h2>
       {error && <div className="error">{error}</div>}
       <form onSubmit={submitChanges}>
         <div className="field-controls">
@@ -193,7 +196,7 @@ export const EditProfile = ({ setAuth, token, username, profilePk }) => {
             options={selectProfilePicOptions}
             onChange={(e) => setProfilePic(e.value)}
             value={selectProfilePicOptions.filter(
-              (option) => option.label === profilePic
+              (option) => option.value === profilePic
             )}
           />
         </div>
@@ -211,6 +214,9 @@ export const EditProfile = ({ setAuth, token, username, profilePk }) => {
             required
             options={selectBannerOptions}
             onChange={(e) => setBanner(e.value)}
+            value={selectBannerOptions.filter(
+              (option) => option.value === banner
+            )}
           />
         </div>
         <div className="field-controls">
@@ -249,7 +255,10 @@ export const EditProfile = ({ setAuth, token, username, profilePk }) => {
           />
         </div>
         <div className="field-controls">
-          <button type="submit">Submit Your Changes</button>
+          <button type="submit">
+            {" "}
+            <Link to="/profile">Submit Edit</Link>
+          </button>
         </div>
       </form>
       <div>
@@ -261,7 +270,6 @@ export const EditProfile = ({ setAuth, token, username, profilePk }) => {
           <p>About Me: {aboutMe}</p>
         </div>
       </div>
-      <Link to="/home">Home</Link>
     </div>
   );
 };

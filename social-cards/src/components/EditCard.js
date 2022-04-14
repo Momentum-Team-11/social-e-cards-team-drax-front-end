@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import Select from "react-select";
 import { useParams } from "react-router-dom";
 
-export const EditCard = ({ setAuth, token, username }) => {
+export const EditCard = ({ setAuth, token, username, comments }) => {
   const [error, setError] = useState("");
   const [frontDescription, setFrontDescription] = useState("");
   const [occasion, setOccasion] = useState("");
@@ -249,6 +249,7 @@ export const EditCard = ({ setAuth, token, username }) => {
             like=""
             card_alignment={cardAlignment}
             cardFont={cardFont}
+            comments={comments}
           />
         </div>
       </div>

@@ -9,6 +9,7 @@ export const CustomizeProfile = ({
   token,
   username,
   setProfilePk,
+  setProfileImage,
 }) => {
   const [error, setError] = useState("");
   const [profilePic, setProfilePic] = useState("");
@@ -53,6 +54,7 @@ export const CustomizeProfile = ({
       .request(options)
       .then(function (response) {
         setProfilePk(response.data.pk);
+        setProfileImage(response.data.profile_pic);
       })
       .catch(function (error) {
         console.error(error);

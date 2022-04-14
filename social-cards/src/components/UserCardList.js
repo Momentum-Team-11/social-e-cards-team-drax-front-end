@@ -1,5 +1,5 @@
 import { Card } from "./Card";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import { Link, Navigate } from "react-router-dom";
 
@@ -43,8 +43,8 @@ export const UserCardList = ({ token, currentUser, comments }) => {
                 card_color={card.card_color}
                 has_back={card.has_back}
                 key={card.id}
-                ProfileImageUrl={card.ProfileImageUrl}
-                CardImageUrl={card.CardImageUrl}
+                ProfileImageUrl={card.profile_pic}
+                CardImageUrl={card.image}
                 occasion={card.occasion}
                 like={card.like}
                 cardId={card.pk}
@@ -53,6 +53,7 @@ export const UserCardList = ({ token, currentUser, comments }) => {
                 card_alignment={card.card_alignment}
                 card_font={card.card_font}
                 comments={comments}
+                card_font_color={card.font_color}
               />
             </div>
           );

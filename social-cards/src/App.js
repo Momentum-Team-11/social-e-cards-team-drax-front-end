@@ -3,7 +3,7 @@ import { Login } from "./components/Login";
 import { MenuBar } from "./components/MenuBar";
 import { PublicCardList } from "./components/PublicCardList";
 import { CreateCard } from "./components/CreateCard";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { Logout } from "./components/Logout";
 import { SignUp } from "./components/SignUp";
@@ -17,7 +17,6 @@ import { EditDraft } from "./components/EditDraft";
 import { OccasionSearch } from "./components/OccasionSearch";
 import { CustomizeProfile } from "./components/CustomizeProfile";
 import { EditProfile } from "./components/EditProfile";
-import axios from "axios";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -26,23 +25,26 @@ function App() {
   const [bodyText, setBodyText] = useState(true);
   const [profilePk, setProfilePk] = useState(localStorage.getItem("profilePk"));
   const [comments, setComments] = useState([]);
+  const [profileImage, setProfileImage] = useState(
+    localStorage.getItem("profileImage")
+  );
   const setAuth = (username, token) => {
     setToken(token);
     setUsername(username);
   };
   const isLoggedIn = username && token;
 
-  useEffect(() => {
-    axios
-      .get(`https://ecard-drax.herokuapp.com/api/comment/list/`, {
-        headers: {
-          Authorization: `Token ${token}`,
-        },
-      })
-      .then((response) => {
-        setComments(response.data.results);
-      });
-  }, [token]);
+  // useEffect(() => {
+  //   axios
+  //     .get(`https://ecard-drax.herokuapp.com/api/comment/list/`, {
+  //       headers: {
+  //         Authorization: `Token ${token}`,
+  //       },
+  //     })
+  //     .then((response) => {
+  //       setComments(response.data.results);
+  //     });
+  // }, [token]);
 
   useEffect(() => {
     localStorage.setItem("username", username);
@@ -55,6 +57,9 @@ function App() {
   useEffect(() => {
     localStorage.setItem("profilePk", profilePk);
   }, [profilePk]);
+  useEffect(() => {
+    localStorage.setItem("profileImage", profileImage);
+  }, [profileImage]);
 
   console.log(profilePk);
   document.body.style.background = `${darkMode ? "white" : "black"}`;
@@ -88,7 +93,9 @@ function App() {
                   <PublicCardList token={token} />
                 </div>
               )}
-              <Login setAuth={setAuth} />
+              <Login setAuth={setAuth} setProfilePk={setProfilePk} />
+              <h2 className="feed">Or:</h2>
+              <SignUp />
             </header>
           }
         />
@@ -114,6 +121,7 @@ function App() {
             <div className="mainPage">
               <MenuBar setAuth={setAuth} token={token} profilePk={profilePk} />
               <PublicCardList
+                setComments={setComments}
                 comments={comments}
                 currentUser={username}
                 token={token}
@@ -136,6 +144,7 @@ function App() {
             <div className="mainPage">
               <MenuBar setAuth={setAuth} token={token} profilePk={profilePk} />
               <CreateCard
+                profileImage={profileImage}
                 comments={comments}
                 token={token}
                 username={username}
@@ -201,6 +210,8 @@ function App() {
                 username={username}
                 profilePk={profilePk}
                 setProfilePk={setProfilePk}
+                profileImage={profileImage}
+                setProfileImage={setProfileImage}
               />{" "}
             </div>
           }
@@ -233,7 +244,7 @@ function App() {
           element={
             <div className="mainPage">
               <MenuBar setAuth={setAuth} token={token} profilePk={profilePk} />
-              <EditCard token={token} />
+              <EditCard token={token} comments={comments} />
             </div>
           }
         />
