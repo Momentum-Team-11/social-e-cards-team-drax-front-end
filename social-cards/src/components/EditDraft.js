@@ -37,7 +37,7 @@ export const EditDraft = ({ setAuth, token, username }) => {
         setCardAlignment(res.data.cardAlignment);
         setCardFont(res.data.card_font);
       });
-  }, [params.cardId, token]);
+  }, [params.draftId, token]);
 
   const setTheBack = (e) => {
     setBackDescription(e.target.value);
