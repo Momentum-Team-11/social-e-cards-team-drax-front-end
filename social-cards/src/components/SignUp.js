@@ -1,33 +1,41 @@
 import { useState } from "react";
 import axios from "axios";
-import "../App.css";
 import { Link } from "react-router-dom";
 
-const Login = ({ setAuth, token }) => {
+export const SignUp = () => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleLogin = (e) => {
+  const handleSignUp = (e) => {
     e.preventDefault();
     setError("");
-    axios
-      .post("https://ecard-drax.herokuapp.com/api/auth/token/login", {
-        username: username,
-        password: password,
-      })
-      .then((res) => {
-        console.log(res.data);
-        setAuth(username, res.data.auth_token);
-      })
-      .catch((e) => setError(e.message));
-  };
+    const options = {
+      method: "POST",
+      url: "https://ecard-drax.herokuapp.com/api/auth/users/",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: {
+        username: `${username}`,
+        password: `${password}`,
+      },
+    };
 
+    axios
+      .request(options)
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  };
   return (
-    <div className="Login">
-      <h2>Log In</h2>
+    <div className="SignUp">
+      <h2>Sign Up</h2>
       {error && <div className="error">{error}</div>}
-      <form onSubmit={handleLogin}>
+      <form onSubmit={handleSignUp}>
         <label className="input-label" htmlFor="username">
           UserName
         </label>
@@ -51,13 +59,10 @@ const Login = ({ setAuth, token }) => {
           />
         </div>
         <div className="field-controls">
-          <button type="submit">
-            <Link to="/home">Log In</Link>
-          </button>
+          <button type="submit">Sign Up</button>
         </div>
       </form>
+      <Link to="/home">Home</Link>
     </div>
   );
 };
-
-export { Login };

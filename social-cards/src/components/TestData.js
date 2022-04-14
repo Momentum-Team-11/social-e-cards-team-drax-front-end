@@ -9,7 +9,7 @@ export const testdata = [
       "https://addyosmani.com/resources/essentialjsdesignpatterns/cover/cover.jpg",
     CardImageUrl:
       "https://github.com/getify/You-Dont-Know-JS/raw/2nd-ed/get-started/images/cover.png",
-    border_color: "Red",
+    border_style: "Chain Link",
     card_color: "Blue",
     has_back: true,
     occasion: "Birthday",
@@ -22,7 +22,7 @@ export const testdata = [
     backDescription: "The second Back card",
     ProfileImageUrl: "https://pine.fm/images/LTP2_cover.jpg",
     CardImageUrl: "https://joyofelixir.com/images/small-cover.png",
-    border_color: "Yellow",
+    border_style: "Subtle Triple",
     card_color: "Green",
     has_back: false,
     occasion: "Wedding",
