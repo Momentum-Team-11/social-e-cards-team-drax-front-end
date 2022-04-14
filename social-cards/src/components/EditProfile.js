@@ -255,10 +255,7 @@ export const EditProfile = ({ setAuth, token, username, profilePk }) => {
           />
         </div>
         <div className="field-controls">
-          <button type="submit">
-            {" "}
-            <Link to="/profile">Submit Edit</Link>
-          </button>
+          <button type="submit"> Submit Edit</button>
         </div>
       </form>
       <div>
