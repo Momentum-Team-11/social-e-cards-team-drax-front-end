@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "../App.css";
-import { Link } from "react-router-dom";
 import Select from "react-select";
 
 export const EditProfile = ({ setAuth, token, username, profilePk }) => {
