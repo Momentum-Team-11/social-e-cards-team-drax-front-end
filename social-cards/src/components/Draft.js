@@ -187,7 +187,7 @@ const Draft = ({
         <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
           <div
             style={cardStyle}
-            className="front card"
+            className="frontCard"
             onClick={() => setIsFlipped((prev) => !prev)}
           >
             <img src={CardImageUrl} alt="card pic"></img>
@@ -195,7 +195,7 @@ const Draft = ({
           </div>
           <div
             style={cardStyle}
-            className="back card"
+            className="backCard"
             onClick={() => setIsFlipped((prev) => !prev)}
           >
             <p>{backDescription}</p>
@@ -204,7 +204,7 @@ const Draft = ({
       ) : (
         <div
           style={cardStyle}
-          className="front card"
+          className="frontCard"
           onClick={() => setIsFlipped((prev) => !prev)}
         >
           <img src={CardImageUrl} alt="card pic"></img>
