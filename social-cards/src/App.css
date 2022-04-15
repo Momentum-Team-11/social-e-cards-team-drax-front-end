@@ -23,7 +23,7 @@ img {
 .menuBar {
   position:fixed;
   display: grid;
-  grid-template-rows:  [row-start] 60px [row-start] 60px [row-start] 60px [row-start] 60px [row-start] 60px [row-start] 60px [row-start] 60px [row-start] 60px [row-start] 60px;
+  grid-template-rows:  [row-start] 60px [row-start] 60px [row-start] 60px [row-start] 60px [row-start] 60px [row-start] 60px [row-start] 60px [row-start] 60px [row-start] 60px [row-start] 60px;
 
   padding: 10px;
 }

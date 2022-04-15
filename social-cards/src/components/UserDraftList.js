@@ -47,7 +47,7 @@ export const UserDraftList = ({ token, currentUser, comments }) => {
                 CardImageUrl={card.image}
                 occasion={card.occasion}
                 like={card.like}
-                cardId={card.pk}
+                draftId={card.pk}
                 token={token}
                 userId={card.user_pk}
                 card_alignment={card.card_alignment}
