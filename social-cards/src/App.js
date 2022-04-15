@@ -134,7 +134,11 @@ function App() {
           element={
             <div className="mainPage">
               <MenuBar setAuth={setAuth} token={token} profilePk={profilePk} />
-              <OccasionSearch currentUser={username} token={token} />
+              <OccasionSearch
+                currentUser={username}
+                token={token}
+                comments={comments}
+              />
             </div>
           }
         />
@@ -257,7 +261,7 @@ function App() {
           element={
             <div className="mainPage">
               <MenuBar setAuth={setAuth} token={token} profilePk={profilePk} />
-              <EditDraft token={token} />
+              <EditDraft token={token} username={username} />
             </div>
           }
         />

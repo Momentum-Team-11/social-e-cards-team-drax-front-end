@@ -240,6 +240,7 @@ export const EditCard = ({ setAuth, token, username, comments }) => {
         <h2>Card Preview</h2>
         <div>
           <Card
+            className="cardPreview"
             occasion={occasion}
             frontDescription={frontDescription}
             backDescription={backDescription}
@@ -248,8 +249,11 @@ export const EditCard = ({ setAuth, token, username, comments }) => {
             has_back={"true"}
             like=""
             card_alignment={cardAlignment}
-            cardFont={cardFont}
+            card_font={cardFont}
+            // CardImageUrl={cardImageUrl}
+            // card_font_color={cardFontColor}
             comments={comments}
+          />
           />
         </div>
       </div>

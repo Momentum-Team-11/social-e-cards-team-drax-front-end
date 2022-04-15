@@ -20,6 +20,9 @@ const Draft = ({
   draftId,
   token,
   currentUser,
+  card_alignment,
+  font_color,
+  card_font,
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [cardStyle, setCardStyle] = useState();
@@ -163,6 +166,40 @@ const Draft = ({
         console.error(error);
       });
   };
+  const publishDraft = () => {
+    const options = {
+      method: "POST",
+      url: "https://ecard-drax.herokuapp.com/api/cards/",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Token ${token}`,
+      },
+      data: {
+        username: username,
+        occasion: occasion,
+        frontDescription: frontDescription,
+        backDescription: backDescription,
+        like: [],
+        has_back: has_back,
+        card_color: card_color,
+        border: border_style,
+        card_font: card_font,
+        card_alignment: card_alignment,
+        profile_pic: ProfileImageUrl,
+        font_color: font_color,
+        image: CardImageUrl,
+      },
+    };
+
+    axios
+      .request(options)
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  };
   //   {
   //     "Beaded: setCardStyle(Beaded),
   //     "Chain Link": setCardStyle(chainLink),
@@ -217,8 +254,8 @@ const Draft = ({
           <button onClick={() => removeLike()}>Unlike 👎 </button>
           <button onClick={() => follow()}>Follow User </button>
           <button onClick={() => unFollow()}>Unfollow User </button>
+          <button onClick={() => publishDraft()}>Publish Draft </button>
           <button onClick={() => deleteDraft()}>Delete Draft </button>
-          <Link to={`/editdraft/${draftId}`}>Edit</Link>
         </>
       ) : (
         <>

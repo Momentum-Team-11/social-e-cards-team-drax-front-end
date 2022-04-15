@@ -6,7 +6,13 @@ import { Link } from "react-router-dom";
 import Select from "react-select";
 import { useParams } from "react-router-dom";
 
-export const EditDraft = ({ setAuth, token, username }) => {
+export const EditDraft = ({
+  setAuth,
+  token,
+  username,
+  currentUser,
+  comments,
+}) => {
   const [error, setError] = useState("");
   const [frontDescription, setFrontDescription] = useState("");
   const [occasion, setOccasion] = useState("");
@@ -112,7 +118,6 @@ export const EditDraft = ({ setAuth, token, username }) => {
     { value: "Safe", label: "Safe" },
     { value: "Unsafe", label: "Unsafe" },
   ];
-  console.log(cardColor);
   return (
     <div className="createCard">
       <h2>Edit Your Draft:</h2>
@@ -239,6 +244,7 @@ export const EditDraft = ({ setAuth, token, username }) => {
         <h2>Card Preview</h2>
         <div>
           <Card
+            className="cardPreview"
             occasion={occasion}
             frontDescription={frontDescription}
             backDescription={backDescription}
@@ -247,7 +253,10 @@ export const EditDraft = ({ setAuth, token, username }) => {
             has_back={"true"}
             like=""
             card_alignment={cardAlignment}
-            cardFont={cardFont}
+            card_font={cardFont}
+            // CardImageUrl={cardImageUrl}
+            // card_font_color={cardFontColor}
+            comments={comments}
           />
         </div>
       </div>

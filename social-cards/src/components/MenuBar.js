@@ -36,7 +36,7 @@ const MenuBar = (profilePk, setAuth, token) => {
       </Link>
       {/* )} */}
       <Link style={menuLink} to="/search">
-        Search by Occasion
+        🔎Search by Occasion
       </Link>
       <Link style={menuLink} to="/mycards">
         🗃️ My Cards
