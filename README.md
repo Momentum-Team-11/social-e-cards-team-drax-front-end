@@ -3,8 +3,6 @@ A link to: [Social Cards](https://zippy-lokum-3ebff6.netlify.app/home)
 
 # Hello and Welcome
 
-What you are about to read is a testament that with enough hard work and determination,
-nothing is impossible and all hurdles shall be overcome!.
 
 
 # Inspiration
