@@ -21,7 +21,7 @@ export const OccasionSearch = ({ token, currentUser }) => {
   return (
     <div>
       {" "}
-      <form className="section" onSubmit={handleSubmit}>
+      <form className="feed" onSubmit={handleSubmit}>
         <div className="field">
           <label className="label" htmlFor="search">
             search
@@ -45,7 +45,7 @@ export const OccasionSearch = ({ token, currentUser }) => {
           </div>
         </div>
       </form>
-      <div className="book-list container-box">
+      <div className="card-container">
         {searchResults &&
           searchResults.map((card, key) => (
             <div key={key}>
