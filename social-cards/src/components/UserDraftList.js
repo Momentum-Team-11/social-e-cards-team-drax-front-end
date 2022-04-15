@@ -3,7 +3,7 @@ import axios from "axios";
 import { Navigate } from "react-router-dom";
 import { Draft } from "./Draft";
 
-export const UserDraftList = ({ token, currentUser }) => {
+export const UserDraftList = ({ token, currentUser, comments }) => {
   const [cards, setCards] = useState([]);
   const [pages, setPages] = useState([]);
   useEffect(() => {
@@ -43,13 +43,17 @@ export const UserDraftList = ({ token, currentUser }) => {
                 card_color={card.card_color}
                 has_back={card.has_back}
                 key={card.id}
-                ProfileImageUrl={card.ProfileImageUrl}
-                CardImageUrl={card.CardImageUrl}
+                ProfileImageUrl={card.profile_pic}
+                CardImageUrl={card.image}
                 occasion={card.occasion}
                 like={card.like}
-                draftId={card.pk}
+                cardId={card.pk}
                 token={token}
                 userId={card.user_pk}
+                card_alignment={card.card_alignment}
+                card_font={card.card_font}
+                comments={comments}
+                card_font_color={card.font_color}
               />
             </div>
           );

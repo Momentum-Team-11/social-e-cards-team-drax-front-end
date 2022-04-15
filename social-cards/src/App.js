@@ -170,7 +170,11 @@ function App() {
           element={
             <div className="mainPage">
               <MenuBar setAuth={setAuth} token={token} profilePk={profilePk} />
-              <UserDraftList currentUser={username} token={token} />
+              <UserDraftList
+                currentUser={username}
+                token={token}
+                comments={comments}
+              />
             </div>
           }
         />
