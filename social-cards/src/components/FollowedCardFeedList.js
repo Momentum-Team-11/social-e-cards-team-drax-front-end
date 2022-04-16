@@ -17,6 +17,7 @@ export const FollowedCardFeedList = ({
 
   console.log(comments);
   useEffect(() => {
+    console.log("[useEffect] setup");
     axios
       .get(`https://ecard-drax.herokuapp.com/api/following/`, {
         headers: {
@@ -31,7 +32,7 @@ export const FollowedCardFeedList = ({
         );
         setPages(response.data.next);
       });
-  }, [token, cards]);
+  }, [token]);
   console.log(cards);
   console.log(pages);
   cards.sort(cards.created_at).reverse();
@@ -46,7 +47,7 @@ export const FollowedCardFeedList = ({
         setCurrentUserPk(response.data.results[0].user_pk);
         console.log(currentUserPk);
       });
-  }, [token, currentUserPk]);
+  }, [token, currentUserPk, setCurrentUserPk]);
   if (!token) {
     return <Navigate to="/login" />;
   }
