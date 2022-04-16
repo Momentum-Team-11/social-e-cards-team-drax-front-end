@@ -351,7 +351,7 @@ const Card = ({
                 return (
                   <div key={key}>
                     {" "}
-                    <p key={comment.username}>{comment.username}</p>
+                    <p key={comment.username}>{comment.username}:</p>
                     <p key={comment.text}>{comment.text}</p>
                     <button
                       key={comment.pk}

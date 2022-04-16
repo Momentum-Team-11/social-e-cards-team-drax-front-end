@@ -17,6 +17,7 @@ import { EditDraft } from "./components/EditDraft";
 import { OccasionSearch } from "./components/OccasionSearch";
 import { CustomizeProfile } from "./components/CustomizeProfile";
 import { EditProfile } from "./components/EditProfile";
+import axios from "axios";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -34,17 +35,17 @@ function App() {
   };
   const isLoggedIn = username && token;
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`https://ecard-drax.herokuapp.com/api/comment/list/`, {
-  //       headers: {
-  //         Authorization: `Token ${token}`,
-  //       },
-  //     })
-  //     .then((response) => {
-  //       setComments(response.data.results);
-  //     });
-  // }, [token]);
+  useEffect(() => {
+    axios
+      .get(`https://ecard-drax.herokuapp.com/api/comment/list/`, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      })
+      .then((response) => {
+        setComments(response.data.results);
+      });
+  }, [token]);
 
   useEffect(() => {
     localStorage.setItem("username", username);
