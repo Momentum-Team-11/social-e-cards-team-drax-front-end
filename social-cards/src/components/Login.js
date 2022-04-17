@@ -69,7 +69,7 @@ const Login = ({ setAuth, token }) => {
             Password
           </label>
           <input
-            type="text"
+            type="password"
             id="loginPassword"
             required
             value={password}
