@@ -1,4 +1,4 @@
-A link to: [Social Cards](https://zippy-lokum-3ebff6.netlify.app/home)
+A link to: [Social Cards](https://social-cards-444.netlify.app/login)
 
 
 # Hello and Welcome
