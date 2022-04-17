@@ -1,14 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const SignUp = () => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
-  const handleSignUp = (e) => {
+  const [shouldRedirect, setShouldRedirect] = useState(false);
+  const navigate = useNavigate();
+  const useHandleSignUp = (e) => {
     e.preventDefault();
     setError("");
+    setShouldRedirect(true);
     const options = {
       method: "POST",
       url: "https://ecard-drax.herokuapp.com/api/auth/users/",
@@ -28,15 +31,21 @@ export const SignUp = () => {
       })
       .catch(function (error) {
         console.error(error);
-      });
+      })
+      .then();
   };
+  useEffect(() => {
+    if (shouldRedirect === true) {
+      navigate("/home");
+    }
+  }, [shouldRedirect, navigate]);
   return (
     <div className="signup">
       <h2>
         <u>Sign Up</u>
       </h2>
       {error && <div className="error">{error}</div>}
-      <form onSubmit={handleSignUp}>
+      <form onSubmit={useHandleSignUp}>
         <label className="input-label" htmlFor="username">
           UserName
         </label>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import "../App.css";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ setAuth, token }) => {
   const [username, setUserName] = useState("");
@@ -8,8 +9,8 @@ const Login = ({ setAuth, token }) => {
   const [error, setError] = useState("");
   console.log(username);
   console.log(password);
-
-  const handleLogin = (e) => {
+  const navigate = useNavigate();
+  const useHandleLogin = (e) => {
     e.preventDefault();
     setError("");
     const options = {
@@ -28,6 +29,7 @@ const Login = ({ setAuth, token }) => {
       .catch(function (error) {
         console.error(error);
       });
+    navigate("/home");
   };
 
   // const handleLogin = (e) => {
@@ -51,7 +53,7 @@ const Login = ({ setAuth, token }) => {
         <u>Log In</u>
       </h2>
       {error && <div className="error">{error}</div>}
-      <form onSubmit={handleLogin}>
+      <form onSubmit={useHandleLogin}>
         <label className="input-label" htmlFor="username">
           UserName
         </label>
