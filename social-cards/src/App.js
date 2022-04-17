@@ -78,6 +78,7 @@ function App() {
       <br></br>
 
       <Routes>
+        <Route path="/" element={<Navigate replace to="/home" />} />
         <Route
           path="login"
           element={
